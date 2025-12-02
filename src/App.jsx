@@ -1,6 +1,9 @@
+import Home from "./pages/Home";
 
 const App = () => {
-  return <div className="text-5xl font-bold underline flex items-center justify-center text-emerald-500 h-screen">App</div>;
+  return <div>
+    <Home/>
+  </div>;
 }
 
 export default App
