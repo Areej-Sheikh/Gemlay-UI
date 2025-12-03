@@ -3,6 +3,7 @@ import Category from "./pages/Category";
 import Collections from "./pages/Collections";
 import CustomerReviews from "./pages/CustomerReviews";
 import Home from "./pages/Home";
+import NewsletterSignup from "./pages/NewsletterSignup";
 import ShopByGender from "./pages/ShopByGender";
 import TrendingProducts from "./pages/TrendingProducts";
 import Updates from "./pages/Updates";
@@ -18,6 +19,7 @@ const App = () => {
       <ShopByGender />
       <CustomerReviews/>
       <Updates/>
+      <NewsletterSignup/>
     </div>
   );
 }

@@ -16,11 +16,11 @@ const Updates = () => {
           KNOW ABOUT WHAT OTHERS THINK
         </div>
       </div>
-      <div className='flex w-[23%] gap-6 rounded-full'>
-        <img src={update1} alt="" className='rounded-4xl'/>
-        <img src={update2} alt="" className='rounded-4xl'/>
-        <img src={update3} alt="" className='rounded-4xl'/>
-        <img src={update1} alt="" className='rounded-4xl'/>
+      <div className="flex w-[23%] gap-6 rounded-full">
+        <img src={update1} alt="" className="rounded-4xl" />
+        <img src={update2} alt="" className="rounded-4xl" />
+        <img src={update3} alt="" className="rounded-4xl" />
+        <img src={update1} alt="" className="rounded-4xl" />
       </div>
       <div className="mt-14 text-[#007A64] flex justify-center text-lg">
         DISCOVER ALL <i className="ri-arrow-right-s-fill"></i>
