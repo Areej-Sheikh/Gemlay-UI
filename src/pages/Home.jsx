@@ -5,7 +5,7 @@ import truck from "../assets/deliveryTruck.png";
 import gift from "../assets/discount.png";
 const Home = () => {
   return (
-    <div>
+    <div className="bg-[#FBFBFB]">
       <Nav />
       <div className="h-7 p-5 w-full flex items-center justify-evenly bg-[#F5F5F5]">
         <p>NEW ARRIVAL</p>
@@ -23,7 +23,7 @@ const Home = () => {
       <div className="flex items-center justify-center">
         <SliderCarousel />
       </div>
-      <div className="bg-[#FAFAFA] h-full flex flex-row items-center justify-between px-20 m-10">
+      <div className="bg-[#FBFBFB] h-full flex flex-row items-center justify-between px-20 m-10">
         <div className="bg-[linear-gradient(90deg,rgba(260,260,260,1)_0%,rgba(230,230,230,1)_100%)] flex items-center justify-around w-[40%] rounded-full">
           <div className="flex flex-col text-4xl">
             EXPRESS <span className="text-[#007A64] mt-1"> DELIVERY</span>

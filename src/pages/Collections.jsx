@@ -6,7 +6,7 @@ import coll5 from "../assets/collection5.png"
 import coll6 from "../assets/collection6.png"
 const Collections = () => {
   return (
-    <div className="flex flex-col items-center justify-center mb-10 bg-[#FBFBFB]">
+    <div className="flex flex-col items-center justify-center mb-10 bg-[#FBFBFB] px-10">
       <div className="flex flex-col items-center justify-center text-xl">
         <div className="flex items-center gap-3">
           <div className="h-0.5 w-20 bg-[#007A64]" />
