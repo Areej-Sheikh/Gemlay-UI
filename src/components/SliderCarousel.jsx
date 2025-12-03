@@ -34,7 +34,6 @@ const SliderCarousel = () => {
 
   return (
     <div className="w-full flex items-center justify-center gap-4 mt-10 mb-10">
-      {/* LEFT BUTTON */}
       <button
         onClick={prevSlide}
         className="bg-white shadow py-3 px-4 rounded-full hover:scale-110"
@@ -42,7 +41,6 @@ const SliderCarousel = () => {
         <i className="ri-arrow-left-s-fill"></i>
       </button>
 
-      {/* CAROUSEL WINDOW */}
       <div className="overflow-hidden w-[69%]">
         <div
           className="flex items-center transition-transform duration-500"
@@ -65,7 +63,6 @@ const SliderCarousel = () => {
         </div>
       </div>
 
-      {/* RIGHT BUTTON */}
       <button
         onClick={nextSlide}
         className="bg-white shadow py-3 px-4 rounded-full hover:scale-110"

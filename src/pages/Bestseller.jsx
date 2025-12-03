@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import product1 from "../assets/product1.png";
 import product2 from "../assets/product2.png";
 import product3 from "../assets/product3.png";
@@ -7,7 +6,7 @@ import product4 from "../assets/product4.png";
 import product5 from "../assets/product5.png";
 import menu from "../assets/menuOptions.png";
 
-const TrendingProducts = () => {
+const Bestseller = () => {
   const products = [product1, product2, product3, product4, product5];
   const [liked, setLiked] = useState([false, false, false, false, false]);
   const toggleLike = (index) => {
@@ -23,7 +22,7 @@ const TrendingProducts = () => {
       <div className="flex flex-col items-center justify-center text-xl m-10">
         <div className="flex items-center gap-3">
           <div className="h-0.5 w-20 bg-[#007A64]" />
-          <div className="font-semibold">TRENDING PRODUCTS</div>
+          <div className="font-semibold">BESTSELLERS</div>
           <div className="h-0.5 w-20 bg-[#007A64]" />
         </div>
 
@@ -46,7 +45,7 @@ const TrendingProducts = () => {
                     "linear-gradient(90deg, rgba(42,123,155,0.82) 0%, rgba(87,199,133,0.77) 100%)",
                 }}
               >
-                TRENDING
+                Best Seller
               </div>
               <div
                 className="text-2xl mr-2 cursor-pointer transition-all duration-300"
@@ -112,4 +111,4 @@ const TrendingProducts = () => {
   );
 };
 
-export default TrendingProducts;
+export default Bestseller;
