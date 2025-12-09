@@ -22,7 +22,7 @@ const ReviewCard = ({ name, date, text, rating }) => {
       <div className="mb-7">{text}</div>
 
       <div className="flex items-center justify-between">
-        <img src={google} alt="google logo" />
+        <img src={google} alt="google logo" className="w-[10%]" />
         <div className="flex">
           {[1, 2, 3, 4, 5].map((i) => (
             <img
