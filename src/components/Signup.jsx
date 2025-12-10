@@ -2,7 +2,7 @@
   import axios from "axios";
  import { toast } from "react-hot-toast";
   import { useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
   import logo from "../assets/logo.png";
   import google from "../assets/google.png";
 
@@ -15,6 +15,9 @@
       import.meta.env.MODE === "production"
         ? import.meta.env.VITE_BACKEND_URL_PROD
         : import.meta.env.VITE_BACKEND_URL_DEV;
+useEffect(() => {
+  console.log("BACKEND URL:", import.meta.env.VITE_BACKEND_URL_PROD);
+}, []);
 
     const handleSignup = async (e) => {
       e.preventDefault();
