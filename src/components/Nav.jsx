@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/authContext";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/context";
 
 import logo from "../assets/logo.png";
 import nav1 from "../assets/nav1.png";
@@ -10,11 +10,11 @@ import nav5 from "../assets/nav5.png";
 import profile from "../assets/profile.png";
 
 const Nav = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+  const [dropdown, setDropdown] = useState(false);
 
   return (
     <div>
-      {/* Announcement Bar */}
       <div className="bg-[#009278] w-screen h-5 flex items-center justify-center max-[770px]:hidden">
         <p className="text-[13px] text-white font-light">
           Refer And Earn Extra <strong>Discount.</strong>{" "}
@@ -24,9 +24,7 @@ const Nav = () => {
         </p>
       </div>
 
-      {/* Main Nav */}
-      <div className="w-screen flex items-center justify-center drop-shadow-xl h-20 bg-[#FAFEFD] px-4">
-        {/* Mobile Hamburger */}
+      <div className="w-screen flex items-center justify-center drop-shadow-xl h-20 bg-[#FAFEFD] px-4 relative">
         <button className="min-[770px]:hidden">
           <svg
             className="w-8 h-8 text-black"
@@ -39,10 +37,8 @@ const Nav = () => {
           </svg>
         </button>
 
-        {/* Logo */}
         <img src={logo} alt="Logo" className="w-40" />
 
-        {/* Search Bar (Desktop Only) */}
         <div className="relative min-[770px]:block max-[769px]:hidden">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
@@ -57,10 +53,11 @@ const Nav = () => {
           </div>
           <input
             type="text"
-            className="block w-md p-3 pl-9 border border-gray-300 text-sm rounded-3xl focus:border-brand shadow-sm placeholder:text-gray-500"
+            className="block w-md p-3 pl-9 border border-gray-300 text-sm rounded-3xl shadow-sm placeholder:text-gray-500"
             placeholder="Search"
           />
         </div>
+
         <div className="flex items-center justify-center w-[34%] max-[770px]:hidden">
           {[
             { img: nav1, label: "GSP" },
@@ -71,9 +68,7 @@ const Nav = () => {
           ].map((item) => (
             <div
               key={item.label}
-              className="flex flex-col items-center justify-center text-center 
-             cursor-pointer hover:scale-105 transition w-16 
-             border-r border-gray-200 last:border-r-0"
+              className="flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition w-16 border-r border-gray-200 last:border-r-0"
             >
               <img
                 src={item.img}
@@ -91,12 +86,12 @@ const Nav = () => {
           <i className="ri-search-2-line text-2xl"></i>
         </div>
 
-        <div className="max-[769px]:hidden">
+        <div className="max-[769px]:hidden relative">
           {!user ? (
             <div className="flex items-center gap-4 text-sm mr-4">
               <button
                 onClick={() => (window.location.href = "/login")}
-                className="px-4 py-2 rounded-lg border  bg-green-700 border-green-700 text-white hover:bg-green-600 transition shadow-sm"
+                className="px-4 py-2 rounded-lg border bg-green-700 border-green-700 text-white hover:bg-green-600 transition shadow-sm"
               >
                 Login
               </button>
@@ -109,16 +104,28 @@ const Nav = () => {
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2 mr-3">
+            <div
+              className="flex items-center gap-2 mr-3 cursor-pointer"
+              onClick={() => setDropdown(!dropdown)}
+            >
               <img src={profile} alt="" className="w-10 rounded-full" />
-
               <div className="flex flex-col">
                 <div className="text-md max-w-[120px] overflow-hidden whitespace-nowrap text-ellipsis">
                   {user.name}
                 </div>
-
                 <div className="h-1 bg-[#007A64] rounded-full w-full mt-1"></div>
               </div>
+
+              {dropdown && (
+                <div className="absolute top-10 right-0 w-40 bg-white shadow-lg rounded-lg border border-gray-200 z-50">
+                  <button
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

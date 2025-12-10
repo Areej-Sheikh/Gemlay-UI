@@ -23,7 +23,7 @@ const Home = () => {
         ].map((item) => (
           <p
             key={item}
-            className="cursor-pointer p-2  transition-all duration-200 hover:bg-[#cdcdcd] hover:scale-105 hover:text-grey"
+            className="cursor-pointer p-2  transition-all duration-200 hover:bg-[#cdcdcd]  hover:text-grey"
           >
             {item}
           </p>
