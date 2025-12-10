@@ -5,9 +5,8 @@ import star from "../assets/star.png";
 import starFilled from "../assets/starFill.svg";
 
 const ReviewCard = ({ name, date, text, rating }) => {
-
   return (
-    <div className="w-[25%] bg-[#F9F9F9] m-10 py-10 px-5 rounded-bl-4xl rounded-tr-4xl shadow-md">
+    <div className="min-w-[280px] sm:w-[25%] bg-[#F9F9F9] m-4 py-8 px-5 rounded-bl-4xl rounded-tr-4xl shadow-md flex-shrink-0">
       <div className="flex items-center justify-between mb-6">
         <div>
           <p>{name}</p>
@@ -15,7 +14,6 @@ const ReviewCard = ({ name, date, text, rating }) => {
             {date}
           </span>
         </div>
-
         <img src={quote} alt="quote icon" />
       </div>
 
@@ -38,7 +36,6 @@ const ReviewCard = ({ name, date, text, rating }) => {
   );
 };
 
-
 const CustomerReviews = () => {
   const reviews = [
     {
@@ -59,8 +56,31 @@ const CustomerReviews = () => {
       text: "Worth every penny. Amazing service and great response time.",
       rating: 4,
     },
+    {
+      name: "Priya",
+      date: "February 14, 2025",
+      text: "Very satisfied with the quality and timely delivery.",
+      rating: 5,
+    },
+    {
+      name: "Amit",
+      date: "March 5, 2025",
+      text: "Customer support was helpful and resolved my queries quickly.",
+      rating: 4,
+    },
+    {
+      name: "Sneha",
+      date: "April 12, 2025",
+      text: "Beautiful designs and excellent craftsmanship. Highly recommend!",
+      rating: 5,
+    },
+    {
+      name: "Vikram",
+      date: "May 1, 2025",
+      text: "Good experience overall, but packaging could be improved.",
+      rating: 3,
+    },
   ];
-
 
   return (
     <div
@@ -79,7 +99,7 @@ const CustomerReviews = () => {
         <div className="text-[#007A64]">KNOW ABOUT WHAT OTHERS THINK</div>
       </div>
 
-      <div className="flex justify-center flex-wrap">
+      <div className="flex overflow-x-auto scrollbar-hide px-4 py-6 gap-4">
         {reviews.map((review, idx) => (
           <ReviewCard key={idx} {...review} />
         ))}

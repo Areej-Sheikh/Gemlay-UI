@@ -24,7 +24,7 @@ const Nav = () => {
         </p>
       </div>
 
-      <div className="w-screen flex items-center justify-center drop-shadow-xl h-20 bg-[#FAFEFD] px-4 relative">
+      <div className="w-screen flex items-center justify-between drop-shadow-xl h-20 bg-[#FAFEFD] px-4 relative">
         <button className="min-[770px]:hidden">
           <svg
             className="w-8 h-8 text-black"
@@ -91,14 +91,14 @@ const Nav = () => {
             <div className="flex items-center gap-4 text-sm mr-4">
               <button
                 onClick={() => (window.location.href = "/login")}
-                className="px-4 py-2 rounded-lg border bg-green-700 border-green-700 text-white hover:bg-green-600 transition shadow-sm"
+                className="px-4 py-2 rounded-lg border bg-[#009278] border-[#009278] text-white hover:bg-[#057662] transition shadow-sm"
               >
                 Login
               </button>
 
               <button
                 onClick={() => (window.location.href = "/signup")}
-                className="px-4 py-2 rounded-lg bg-green-700 text-white font-medium hover:bg-green-600 transition shadow-sm"
+                className="px-4 py-2 rounded-lg bg-[#009278] text-white font-medium hover:bg-[#057662] transition shadow-sm"
               >
                 Signup
               </button>
