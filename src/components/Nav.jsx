@@ -15,7 +15,7 @@ const Nav = () => {
   return (
     <div>
       {/* Announcement Bar */}
-      <div className="bg-[#009278] w-screen h-5 flex items-center justify-center max-[1024px]:flex min-[770px]:hidden">
+      <div className="bg-[#009278] w-screen h-5 flex items-center justify-center max-[770px]:hidden">
         <p className="text-[13px] text-white font-light">
           Refer And Earn Extra <strong>Discount.</strong>{" "}
           <a href="#" className="text-[#531cc6]">
@@ -25,7 +25,7 @@ const Nav = () => {
       </div>
 
       {/* Main Nav */}
-      <div className="w-screen flex items-center justify-between drop-shadow-xl h-20 bg-[#FAFEFD] px-4">
+      <div className="w-screen flex items-center justify-center drop-shadow-xl h-20 bg-[#FAFEFD] px-4">
         {/* Mobile Hamburger */}
         <button className="min-[770px]:hidden">
           <svg
@@ -61,7 +61,7 @@ const Nav = () => {
             placeholder="Search"
           />
         </div>
-        <div className="flex items-center justify-center w-[40%]">
+        <div className="flex items-center justify-center w-[34%] max-[770px]:hidden">
           {[
             { img: nav1, label: "GSP" },
             { img: nav2, label: "OFFERS" },
