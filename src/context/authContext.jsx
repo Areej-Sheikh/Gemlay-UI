@@ -4,10 +4,14 @@ import { AuthContext } from "./context";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const backendURL =
+    import.meta.env.MODE === "production"
+      ? import.meta.env.VITE_BACKEND_URL_PROD
+      : import.meta.env.VITE_BACKEND_URL_DEV;
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/auth/me", {
+      const res = await axios.get(`${backendURL}/api/auth/me`, {
         withCredentials: true,
       });
       setUser(res.data.user);
@@ -20,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        `${backendURL}/api/auth/logout`,
         {},
         { withCredentials: true }
       );

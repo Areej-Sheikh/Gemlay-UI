@@ -11,6 +11,11 @@
     const [phone, setPhone] = useState("");
     const navigate = useNavigate();
 
+    const backendURL =
+      import.meta.env.MODE === "production"
+        ? import.meta.env.VITE_BACKEND_URL_PROD
+        : import.meta.env.VITE_BACKEND_URL_DEV;
+
     const handleSignup = async (e) => {
       e.preventDefault();
       console.log("Signup attempt →", { name, phone });
@@ -35,7 +40,7 @@
 
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/auth/signup",
+          `${backendURL}/api/auth/signup`,
           { name, phone },
           { withCredentials: true }
         );
@@ -53,7 +58,7 @@
 
     const handleGoogleSignup = () => {
       console.log("Redirecting to Google signup…");
-      window.open("http://localhost:5000/api/auth/google", "_self");
+      window.open(`${backendURL}/api/auth/google`, "_self");
     };
 
     return (

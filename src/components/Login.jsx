@@ -7,48 +7,53 @@ import logo from "../assets/logo.png";
 import google from "../assets/google.png";
 
 const Login = () => {
-  const [phone, setPhone] = useState("");
-  const navigate = useNavigate();
+    const [phone, setPhone] = useState("");
+    const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    console.log("Attempting login with phone:", phone);
+    const backendURL =
+      import.meta.env.MODE === "production"
+        ? import.meta.env.VITE_BACKEND_URL_PROD
+        : import.meta.env.VITE_BACKEND_URL_DEV;
 
-    if (!phone.trim()) {
-      console.log("Phone missing");
-      toast.error("Please enter your phone number");
-      return;
-    }
 
-    if (phone.length !== 10) {
-      console.log("Invalid phone length:", phone);
-      toast.error("Phone number must be 10 digits");
-      return;
-    }
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      console.log("Attempting login with phone:", phone);
 
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { phone },
-        { withCredentials: true }
-      );
+      if (!phone.trim()) {
+        console.log("Phone missing");
+        toast.error("Please enter your phone number");
+        return;
+      }
 
-      console.log("Login successful:", res.data.message);
-      toast.success("OTP sent successfully!");
+      if (phone.length !== 10) {
+        console.log("Invalid phone length:", phone);
+        toast.error("Phone number must be 10 digits");
+        return;
+      }
 
-      navigate("/");
-    } catch (err) {
-      const msg = err.response?.data?.message || "Login failed";
-      console.error("Login failed:", msg);
-      toast.error(msg);
-    }
-  };
+      try {
+        const res = await axios.post(
+          `${backendURL}/api/auth/login`,
+          { phone },
+          { withCredentials: true }
+        );
 
-  const handleGoogleLogin = () => {
-    console.log("Redirecting to Google login…");
-    window.open("http://localhost:5000/api/auth/google", "_self");
-  };
+        console.log("Login successful:", res.data.message);
+        toast.success("OTP sent successfully!");
 
+        navigate("/");
+      } catch (err) {
+        const msg = err.response?.data?.message || "Login failed";
+        console.error("Login failed:", msg);
+        toast.error(msg);
+      }
+    };
+
+    const handleGoogleLogin = () => {
+      console.log("Redirecting to Google login…");
+      window.open(`${backendURL}/api/auth/google`, "_self");
+    };
   return (
     <div className="flex flex-col items-center justify-center px-4 mt-10">
       <div className="w-full max-w-md flex flex-col items-center border rounded-2xl bg-[#F8F8F8] p-8">
