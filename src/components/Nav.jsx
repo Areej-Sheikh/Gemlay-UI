@@ -68,21 +68,50 @@ const Nav = () => {
         </div>
 
         <div className="flex items-center justify-center w-[34%] max-[770px]:hidden">
-          {[
-            { img: nav1, label: "GSP" },
-            { img: nav2, label: "OFFERS" },
-            { img: nav3, label: "WISHLIST" },
-            { img: nav4, label: "CART" },
-            { img: nav5, label: "VERIFY" },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition w-16 border-r border-gray-200 last:border-r-0"
-            >
-              <img src={item.img} alt={item.label} className="w-10 h-10" />
-              <span className="text-[10px] mt-1">{item.label}</span>
-            </div>
-          ))}
+          <div className="flex flex-col items-center text-center cursor-pointer hover:scale-105 transition w-16 mt-1 border-r border-gray-200">
+            <img
+              src={nav1}
+              alt="GSP"
+              className="w-10 h-10 flex items-center justify-center"
+            />
+            <span className="text-[10px] mt-1">GSP</span>
+          </div>
+
+          <div className="flex flex-col items-center text-center cursor-pointer hover:scale-105 transition w-16 mt-1 border-r border-gray-200">
+            <img
+              src={nav2}
+              alt="OFFERS"
+              className="w-10 h-10 flex items-center justify-center"
+            />
+            <span className="text-[10px] mt-1">OFFERS</span>
+          </div>
+
+          <div className="flex flex-col items-center text-center cursor-pointer hover:scale-105 transition w-16 mt-1 border-r border-gray-200">
+            <img
+              src={nav3}
+              alt="WISHLIST"
+              className="w-10 h-9 flex items-center justify-center"
+            />
+            <span className="text-[10px] mt-1">WISHLIST</span>
+          </div>
+
+          <div className="flex flex-col items-center text-center cursor-pointer hover:scale-105 transition w-16 mt-1 border-r border-gray-200">
+            <img
+              src={nav4}
+              alt="CART"
+              className="w-10 h-10 flex items-center justify-center"
+            />
+            <span className="text-[10px] mt-1">CART</span>
+          </div>
+
+          <div className="flex flex-col items-center text-center cursor-pointer hover:scale-105 transition w-16 mt-1 last:border-r-0">
+            <img
+              src={nav5}
+              alt="VERIFY"
+              className="w-10 h-10 flex items-center justify-center"
+            />
+            <span className="text-[10px] mt-1">VERIFY</span>
+          </div>
         </div>
 
         <div className="flex gap-3 items-center min-[769px]:hidden">
@@ -116,7 +145,7 @@ const Nav = () => {
               <img src={profile} alt="" className="w-10 rounded-full" />
 
               <div className="flex flex-col">
-                <div className="text-md max-w-[120px] overflow-hidden whitespace-nowrap text-ellipsis" >
+                <div className="text-md max-w-[120px] overflow-hidden whitespace-nowrap text-ellipsis">
                   {user.name}
                 </div>
                 <div className="h-1 bg-[#007A64] rounded-full w-full mt-1"></div>
