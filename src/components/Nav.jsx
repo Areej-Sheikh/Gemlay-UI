@@ -2,7 +2,11 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 
 import logo from "../assets/logo.png";
-import navItems from "../assets/navItems.png";
+import nav1 from "../assets/nav1.png";
+import nav2 from "../assets/nav2.png";
+import nav3 from "../assets/nav3.png";
+import nav4 from "../assets/nav4.png";
+import nav5 from "../assets/nav5.png";
 import profile from "../assets/profile.png";
 
 const Nav = () => {
@@ -57,49 +61,64 @@ const Nav = () => {
             placeholder="Search"
           />
         </div>
+        <div className="flex items-center justify-center w-[40%]">
+          {[
+            { img: nav1, label: "GSP" },
+            { img: nav2, label: "OFFERS" },
+            { img: nav3, label: "WISHLIST" },
+            { img: nav4, label: "CART" },
+            { img: nav5, label: "VERIFY" },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="flex flex-col items-center justify-center text-center 
+             cursor-pointer hover:scale-105 transition w-16 
+             border-r border-gray-200 last:border-r-0"
+            >
+              <img
+                src={item.img}
+                alt={item.label}
+                className="w-10 h-10 object-contain"
+              />
+              <span className="text-[10px] mt-1">{item.label}</span>
+            </div>
+          ))}
+        </div>
 
-        {/* Nav Items (Desktop) */}
-        <img
-          src={navItems}
-          className="h-20 min-[770px]:block max-[769px]:hidden"
-          alt="navItems"
-        />
-
-        {/* Mobile Icons */}
         <div className="flex gap-3 items-center min-[769px]:hidden">
           <i className="ri-heart-3-line text-2xl"></i>
           <i className="ri-shopping-cart-line text-2xl"></i>
           <i className="ri-search-2-line text-2xl"></i>
         </div>
 
-        {/* ⭐ Dynamic Login/Signup OR Username */}
         <div className="max-[769px]:hidden">
           {!user ? (
-            /* User NOT logged in */
-            <div className="flex items-center gap-4 text-sm">
+            <div className="flex items-center gap-4 text-sm mr-4">
               <button
                 onClick={() => (window.location.href = "/login")}
-                className="text-green-800 font-medium"
+                className="px-4 py-2 rounded-lg border  bg-green-700 border-green-700 text-white hover:bg-green-600 transition shadow-sm"
               >
                 Login
               </button>
 
-              <span className="text-gray-400">|</span>
-
               <button
                 onClick={() => (window.location.href = "/signup")}
-                className="text-green-800 font-medium"
+                className="px-4 py-2 rounded-lg bg-green-700 text-white font-medium hover:bg-green-600 transition shadow-sm"
               >
                 Signup
               </button>
             </div>
           ) : (
-            /* User Logged in */
-            <div className="flex items-center gap-2">
-              <img src={profile} alt="" className="w-10" />
-              <div className="text-sm">{user.name}</div>
+            <div className="flex items-center gap-2 mr-3">
+              <img src={profile} alt="" className="w-10 rounded-full" />
 
-              <div className="h-1 w-full bg-[#007A64] rounded-full mt-1"></div>
+              <div className="flex flex-col">
+                <div className="text-md max-w-[120px] overflow-hidden whitespace-nowrap text-ellipsis">
+                  {user.name}
+                </div>
+
+                <div className="h-1 bg-[#007A64] rounded-full w-full mt-1"></div>
+              </div>
             </div>
           )}
         </div>

@@ -9,16 +9,25 @@ const Home = () => {
       <Nav />
       <div
         className="h-7 p-5 w-full flex items-center justify-evenly 
-                hidden min-[1024px]:flex bg-[#F5F5F5]"
+             hidden min-[1024px]:flex bg-[#F5F5F5]"
       >
-        <p>NEW ARRIVAL</p>
-        <p>RINGS</p>
-        <p>EARRINGS</p>
-        <p>PENDANTS</p>
-        <p>BRACELETS & BANGLES</p>
-        <p>SOLITIRES</p>
-        <p>GOLD COINS</p>
-        <p>ALL JEWELLERY</p>
+        {[
+          "NEW ARRIVAL",
+          "RINGS",
+          "EARRINGS",
+          "PENDANTS",
+          "BRACELETS & BANGLES",
+          "SOLITIRES",
+          "GOLD COINS",
+          "ALL JEWELLERY",
+        ].map((item) => (
+          <p
+            key={item}
+            className="cursor-pointer p-2  transition-all duration-200 hover:bg-[#cdcdcd] hover:scale-105 hover:text-grey"
+          >
+            {item}
+          </p>
+        ))}
       </div>
 
       <div className="w-full">
