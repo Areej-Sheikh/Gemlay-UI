@@ -14,6 +14,12 @@ const SliderCarousel = () => {
     { src: bangles, name: "Bangle" },
     { src: necklace, name: "Necklace" },
     { src: pendant, name: "Pendant" },
+    { src: ring, name: "Ring" },
+    { src: earring, name: "Earring" },
+    { src: bracelets, name: "Bracelet" },
+    { src: bangles, name: "Bangle" },
+    { src: necklace, name: "Necklace" },
+    { src: pendant, name: "Pendant" },
   ];
 
   const [current, setCurrent] = useState(0);
