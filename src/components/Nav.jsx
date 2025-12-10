@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/context";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import logo from "../assets/logo.png";
 import nav1 from "../assets/nav1.png";
@@ -8,10 +10,17 @@ import nav3 from "../assets/nav3.png";
 import nav4 from "../assets/nav4.png";
 import nav5 from "../assets/nav5.png";
 import profile from "../assets/profile.png";
-
+import { useRef } from "react";
 const Nav = () => {
   const { user, logout } = useContext(AuthContext);
   const [dropdown, setDropdown] = useState(false);
+  const navigate = useNavigate();
+    const hasWelcomed = useRef(false);
+
+    if (user && !hasWelcomed.current) {
+      toast.success(`Welcome back, ${user.name}!`);
+      hasWelcomed.current = true;
+    }
 
   return (
     <div>
@@ -70,11 +79,7 @@ const Nav = () => {
               key={item.label}
               className="flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition w-16 border-r border-gray-200 last:border-r-0"
             >
-              <img
-                src={item.img}
-                alt={item.label}
-                className="w-10 h-10 object-contain"
-              />
+              <img src={item.img} alt={item.label} className="w-10 h-10" />
               <span className="text-[10px] mt-1">{item.label}</span>
             </div>
           ))}
@@ -90,14 +95,14 @@ const Nav = () => {
           {!user ? (
             <div className="flex items-center gap-4 text-sm mr-4">
               <button
-                onClick={() => (window.location.href = "/login")}
+                onClick={() => navigate("/login")}
                 className="px-4 py-2 rounded-lg border bg-[#009278] border-[#009278] text-white hover:bg-[#057662] transition shadow-sm"
               >
                 Login
               </button>
 
               <button
-                onClick={() => (window.location.href = "/signup")}
+                onClick={() => navigate("/signup")}
                 className="px-4 py-2 rounded-lg bg-[#009278] text-white font-medium hover:bg-[#057662] transition shadow-sm"
               >
                 Signup
@@ -109,8 +114,9 @@ const Nav = () => {
               onClick={() => setDropdown(!dropdown)}
             >
               <img src={profile} alt="" className="w-10 rounded-full" />
+
               <div className="flex flex-col">
-                <div className="text-md max-w-[120px] overflow-hidden whitespace-nowrap text-ellipsis">
+                <div className="text-md max-w-[120px] overflow-hidden whitespace-nowrap text-ellipsis" >
                   {user.name}
                 </div>
                 <div className="h-1 bg-[#007A64] rounded-full w-full mt-1"></div>
@@ -120,7 +126,11 @@ const Nav = () => {
                 <div className="absolute top-10 right-0 w-40 bg-white shadow-lg rounded-lg border border-gray-200 z-50">
                   <button
                     className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
-                    onClick={logout}
+                    onClick={() => {
+                      logout();
+                      toast.success("Logged out successfully");
+                      navigate("/");
+                    }}
                   >
                     Logout
                   </button>
