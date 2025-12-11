@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import google from "../assets/google.png";
+import { AuthContext } from "../context/context";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  const { fetchUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const backendURL =
@@ -15,26 +19,33 @@ const Signup = () => {
       ? import.meta.env.VITE_BACKEND_URL_PROD
       : import.meta.env.VITE_BACKEND_URL_DEV;
 
+  // ------------------------ HANDLE SIGNUP ------------------------
   const handleSignup = async (e) => {
     e.preventDefault();
+
     if (!name.trim()) return toast.error("Please enter your full name");
     if (!phone.trim()) return toast.error("Please enter your phone number");
-    if (phone.length !== 10)
-      return toast.error("Phone number must be 10 digits");
+
+    if (phone.length !== 10 || !/^\d+$/.test(phone))
+      return toast.error("Phone number must be a valid 10-digit number");
 
     try {
-      const res = await axios.post(
+      await axios.post(
         `${backendURL}/api/auth/signup`,
-        { name, phone },
+        {
+          name,
+          phone: "+91" + phone,
+        },
         { withCredentials: true }
       );
-      toast.success("Account created!");
+
+      toast.success("Signup successful!");
+
+      await fetchUser();
+
       navigate("/");
-      console.log(res);
-      
     } catch (err) {
-      const msg = err.response?.data?.message || "Signup failed";
-      toast.error(msg);
+      toast.error(err.response?.data?.message || "Signup failed");
     }
   };
 
@@ -58,13 +69,20 @@ const Signup = () => {
             onChange={(e) => setName(e.target.value)}
             className="w-full mb-4 px-4 py-3 rounded-full border outline-none"
           />
-          <input
-            type="text"
-            placeholder="+91"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="w-full mb-4 px-4 py-3 rounded-full border outline-none"
-          />
+
+          <div className="flex w-full mb-4">
+            <span className="px-4 py-3 bg-gray-200 rounded-l-full border border-r-0 text-gray-700">
+              +91
+            </span>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              value={phone}
+              maxLength={10}
+              onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+              className="w-full px-4 py-3 rounded-r-full border outline-none"
+            />
+          </div>
 
           <button
             type="submit"
