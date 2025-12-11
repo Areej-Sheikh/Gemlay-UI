@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       const res = await axios.get(`${backendURL}/api/auth/me`, {
+        credentials: "include",
         withCredentials: true,
       });
       setUser(res.data.user);
